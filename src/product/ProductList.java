@@ -2,17 +2,18 @@ package product;
 
 import product.Product;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class ProductList {
-    Set<Product> products = new HashSet<>();
+    Map<Product, Integer> products = new HashMap<>();
 
-    public void addProduct(Product product) {
-        if (products.contains(product)) {
+    public void addProduct(Product product, Integer amount) {
+        if (products.containsKey(product)) {
             throw new RuntimeException("Этот товар уже добавлен в список");
+        } else if(amount == 0){
+            products.put(product, 1);
         } else {
-            products.add(product);
+            products.put(product, amount);
         }
     }
 
@@ -23,5 +24,18 @@ public class ProductList {
     @Override
     public String toString() {
         return "Список продуктов: " + "\n" + products;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ProductList)) return false;
+        ProductList that = (ProductList) o;
+        return Objects.equals(products, that.products);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(products);
     }
 }

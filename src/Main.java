@@ -15,18 +15,18 @@ public class Main {
 
         Product bananas = new Product("Бананы", 120, 1.0);
         Product buckwheat = new Product("Гречневая крупа", 100, 0.8);
-        Product yogurt = new Product("Йогурт", 130, 0.9);
-        Product oranges = new Product("Апельсины", 300, 2.0);
+        Product yogurt = new Product("Йогурт", 75, 0.45);
+        Product oranges = new Product("Апельсины", 150, 1.0);
         Product cheese = new Product("Сыр", 800, 1.0);
         Product cheese1 = new Product("Сыр творожный", 350, 0.5);
 
         ProductList list = new ProductList();
-        list.addProduct(bananas);
-        list.addProduct(buckwheat);
-        list.addProduct(yogurt);
-        list.addProduct(oranges);
-        list.addProduct(cheese);
-        list.addProduct(cheese1);
+        list.addProduct(bananas, 6);
+        list.addProduct(buckwheat, 1);
+        list.addProduct(yogurt, 2);
+        list.addProduct(oranges, 6);
+        list.addProduct(cheese, 1);
+        list.addProduct(cheese1, 1);
 
         System.out.println(list);
 
@@ -34,21 +34,18 @@ public class Main {
 
         System.out.println(list);
 
-        ProductList list1 = new ProductList();
-        list1.addProduct(bananas);
-        list1.addProduct(oranges);
-        list1.addProduct(yogurt);
+        Recipe fruitSalad = new Recipe("Фруктовый салат");
+        fruitSalad.addProductRecipe(bananas, 6);
+        fruitSalad.addProductRecipe(oranges, 6);
+        fruitSalad.addProductRecipe(yogurt, 2);
 
-        ProductList list2 = new ProductList();
-        list2.addProduct(bananas);
-        list2.addProduct(cheese);
-
-        Recipe fruitSalad = new Recipe(list1, 550, "Фруктовый салат");
-        Recipe cheeseFondue = new Recipe(list2, 920, "Сырное фондю");
+        Recipe cheeseFondue = new Recipe("Сырное фондю");
+        cheeseFondue.addProductRecipe(bananas, 6);
+        cheeseFondue.addProductRecipe(cheese, 1);
 
         RecipeList recipeList = new RecipeList();
-        recipeList.addRecipe(fruitSalad);
-        recipeList.addRecipe(cheeseFondue);
+        recipeList.addRecipe(1, fruitSalad);
+        recipeList.addRecipe(2, cheeseFondue);
 
         System.out.println(recipeList);
         System.out.println();
@@ -97,4 +94,6 @@ public class Main {
         PassportList passportList = new PassportList(passports);
         System.out.println(passportList);
     }
+
+
 }

@@ -2,17 +2,19 @@ package product;
 
 import product.Recipe;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class RecipeList {
-    Set<Recipe> recipes = new HashSet<>();
+    Map<Integer, Recipe> recipes = new HashMap<>();
 
-    public void addRecipe(Recipe recipe) {
-        if (recipes.contains(recipe)) {
+    public void addRecipe(Integer amount, Recipe recipe) {
+        if (recipes.containsKey(recipe)) {
             throw new RuntimeException("Этот рецепт уже добавлен в список");
         } else {
-            recipes.add(recipe);
+            recipes.put(amount, recipe);
         }
     }
 
